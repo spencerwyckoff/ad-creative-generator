@@ -1,0 +1,396 @@
+<html>
+
+<head>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .left-column {
+            width: 50%;
+        }
+
+        .right-column {
+            width: 50%;
+        }
+
+        form {
+            margin: 0;
+            padding: 20px;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 10px;
+        }
+
+        input[type=submit] {
+            background-color: aqua;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        #form-header {
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .preview-container {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 16px;
+            width: 800px;
+            max-height: 500px;
+            overflow: auto;
+        }
+
+        /* Style the preview content */
+        .preview-content {
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        #html-preview {
+            margin-top: 40px;
+        }
+
+        .placement-reqs {
+            display: block;
+            border: 1px solid blue;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: blue;
+        }
+
+        .placement-reqs p {
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Creative HTML Generator</h1>
+    <div class="container">
+
+        <div class="left-column">
+            <!-- Ad Creation Form -->
+            <h2 id="form-header">Ad Creation Form</h2>
+            <form id="form">
+
+                <!-- Ad Placement Type -->
+                <label for="placement-type">Placement Type:</label><br>
+                <select id="placement-type" name="placement-type">
+                    <option value="">Select a placement type...</option>
+                    <option value="yahoo-flexbox-banner-with-button">Yahoo - Flexbox Banner w/ Button</option>
+                    <option value="yahoo-large-card">Yahoo - Large Card</option>
+                </select><br>
+                
+                <!-- Ad Placement Requirements tool -->
+                <div id="placement-reqs" class="placement-reqs" style="display: none;">
+                    <div id="yahoo-flexbox-with-button-reqs" style="display: none">
+                        <p><strong>Yahoo Flexbox w/ Button requirements:
+                                <a href="https://developer.yahoo.com/flurry/docs/publisher/code/native-web-templates#flexbox-banner-with-button"
+                                    target="_blank">(reference)</a>
+                            </strong></p>
+                        <ul>
+                            <li>1200x627 image (wide aspect ration main image)</li>
+                            <li>Ad Title is required and max 50 characters</li>
+                            <li>Ad Text is optional and max 150 characters</li>
+                            <li>Advertiser Name is required and max 30 characters</li>
+                        </ul>
+                    </div>
+                    <div id="yahoo-large-card-reqs" style="display: none">
+                        <p><strong>Yahoo Large Card requirements:
+                                <a href="https://developer.yahoo.com/flurry/docs/publisher/code/native-web-templates#large-card"
+                                    target="_blank">(reference)</a>
+                            </strong></p>
+                        <ul>
+                            <li>1200x627 image (wide aspect ration main image)</li>
+                            <li>Ad Title is required and max 50 characters</li>
+                            <li>Ad Text is optional and max 150 characters</li>
+                            <li>Advertiser Name is required and max 30 characters</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <!-- Image URL Selector / Input -->
+                <label for="image-url">Image URL:</label><br>
+                <!-- <input type="url" id="image-url" name="image-url" value="https://cdn.adtechnacity.com/29b42e46d0224b05b4c77a4cc9c884ac.png"><br> -->
+                <select id="image-url" name="image-url">
+                    <option value="">Select an approved image...</option>
+                    <option value="https://cdn.adtechnacity.com/29b42e46d0224b05b4c77a4cc9c884ac.png">JenniferCarCC</option>
+                    <option value="https://cdn.adtechnacity.com/67f33d30095b4204971d67091c85aa43.jpg">CC23image3</option>
+                    <option value="https://cdn.adtechnacity.com/dc08da2e1f8e4644b8a02cf7576fb37e.jpg">WomanBoxesv3Fireplace</option>
+                    <option value="https://cdn.adtechnacity.com/fe0c5e950d4441698dccb6ed12106510.png">WomanBoxesGreen</option>
+                </select><br>
+                <label for="ad-title">Title:</label><br>
+                <input type="text" id="ad-title" name="ad-title"><br>
+                <label for="ad-description">Description:</label><br>
+                <input type="text" id="ad-description" name="ad-description"><br>
+                <label for="advertiser-name">Advertiser Name:</label><br>
+                <select id="advertiser-name" name="advertiser-name">
+                    <option value="">Select an advertiser...</option>
+                    <option value="OnlineShoppingTools">OnlineShoppingTools</option>
+                    <option value="GetFreeCoupons">GetFreeCoupons</option>
+                    <option value="CompareCredit">CompareCredit</option>
+                </select><br>
+                <label id="ad-cta-label" for="ad-cta" style="display:none">CTA Button Text:</label>
+                <select id="ad-cta" name="ad-cta" style="display:none">
+                    <option value="">Select an approved CTA...</option>
+                    <option value="Apply Now">Apply Now</option>
+                    <option value="Bet Now">Bet Now</option>
+                    <option value="Book Now">Book Now</option>
+                    <option value="Browse Now">Browse Now</option>
+                    <option value="Buy Now">Buy Now</option>
+                    <option value="Call Now">Call Now</option>
+                    <option value="Compare">Compare</option>
+                    <option value="Contact Us">Contact Us</option>
+                    <option value="Directions">Directions</option>
+                    <option value="Donate Now">Donate Now</option>
+                    <option value="Download">Download</option>
+                    <option value="Enroll Now">Enroll Now</option>
+                    <option value="Explore">Explore</option>
+                    <option value="Find Now">Find Now</option>
+                    <option value="Follow Now">Follow Now</option>
+                    <option value="Get App">Get App</option>
+                    <option value="Get Coupon">Get Coupon</option>
+                    <option value="Get Deals">Get Deals</option>
+                    <option value="Get Now">Get Now</option>
+                    <option value="Get Offer">Get Offer</option>
+                    <option value="Get Quote">Get Quote</option>
+                    <option value="Get Rates">Get Rates</option>
+                    <option value="Get Recipe">Get Recipe</option>
+                    <option value="Get Sample">Get Sample</option>
+                    <option value="Gift Now">Gift Now</option>
+                    <option value="Install">Install</option>
+                    <option value="Join Now">Join Now</option>
+                    <option value="Launch">Launch</option>
+                    <option value="Learn More">Learn More</option>
+                    <option value="Listen Now">Listen Now</option>
+                    <option value="Order Now">Order Now</option>
+                    <option value="Play Now">Play Now</option>
+                    <option value="Play Game">Play Game</option>
+                    <option value="Read More">Read More</option>
+                    <option value="Record Now">Record Now</option>
+                    <option value="Refer Now">Refer Now</option>
+                    <option value="Register">Register</option>
+                    <option value="Remind Me">Remind Me</option>
+                    <option value="Reserve">Reserve</option>
+                    <option value="Save Offer">Save Offer</option>
+                    <option value="Save Now">Save Now</option>
+                    <option value="Sell Now">Sell Now</option>
+                    <option value="Shop Now">Shop Now</option>
+                    <option value="Sign Up">Sign Up</option>
+                    <option value="Subscribe">Subscribe</option>
+                    <option value="Start Now">Start Now</option>
+                    <option value="Switch Now">Switch Now</option>
+                    <option value="Get Sample">Get Sample</option>
+                    <option value="Try Free*">Free*</option>
+                    <option value="Try Now">Try Now</option>
+                    <option value="Upgrade">Upgrade</option>
+                    <option value="Use App">Use App</option>
+                    <option value="View Deals">View Deals</option>
+                    <option value="Vote Now">Vote Now</option>
+                    <option value="Watch Now">Watch Now</option>
+                    <option value="Watch More">Watch More</option>
+                </select><br>
+                <input type="submit" value="Generate HTML">
+            </form>
+        </div>
+
+        <div class="right-column">
+            <!-- Ad Preview  -->
+            <h2 id="ad-preview">Ad Preview</h2>
+
+            <!-- Yahoo Flexbox Banner w/ Button -->
+            <div id="yap_container" class="yap_container"
+                style="display: none; flex-wrap: nowrap; align-items: flex-start; align-content: center; justify-content: flex-start; background-color: #EEEEEE; margin-bottom: 10px; clear: both; padding: 10px;">
+                <div class="yap_image" style="flex: auto;"><a href="{click_url}"
+                        style="text-decoration: none; color: #000;"> <img id="image-url-preview" src=""
+                            style="background-color: transparent; height: 156px; width: 300px; background-size: cover !important;"></a>
+                </div>
+                <div class="yap_text" style="width: 100%;padding: 0 10px;">
+                    <a href="{click_url}" style="text-decoration: none; color: #000;">
+                        <p id="sponsored-advertiser-name-preview"
+                            style="font-size: 11px; color: #4D90FD; padding: 0; margin: 0 0 5px 0;">
+                            <span id="advertiser-name-preview" style="float: right;">{gemini}</span>
+                            Sponsored by {sponsor}
+                        </p>
+                        <h2 id="ad-title-preview" style="margin: 0 0 5px 0; padding: 0;">{title}</h2>
+                        <p id="ad-description-preview">{description}</p>
+                        <p id="ad-cta-preview"
+                            style="display: inline; background-color: #4D90FD; color: white; padding: 10px; line-height: 40px; border-radius: 5px">
+                            {callToAction}</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Yahoo Large Card -->
+            <div id="yap_large_card"
+                style="display: none; width: 500px; min-height: 320px; padding: 0px; clear: both; background-color: transparent; border: 1px solid rgb(192, 192, 192); border-radius: 5px; position: relative !important; text-align: center !important;">
+                <div class="yap_img" style="position: relative !important;">
+                    <a href="{click_url}" target="_blank" style="display: block; color: #FFF;">
+                        <img id="yahoo-large-card-preview" src=""
+                            style="background-size: cover !important; width: 100% !important; height: 261px !important;"
+                            alt="{title}">
+                        <p id="yap_ad_spnsrd" class="yap_ad_spnsrd"
+                            style="font-size: 14px; position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.3); padding: 5px; margin: 0 14px 8px 0;">
+                            Sponsored: {sponsor}</p>
+                    </a>
+                </div>
+                <div class="yap_ad_txt" style="width: 95%; margin: auto; text-align: center;">
+                    <a href="{click_url}" target="_blank"
+                        style="display: block !important; color: #000; text-decoration: none;">
+                        <h2 id="yap_large_card__title" style="margin-bottom: 0; font-weight: bold; font-size: 20px; text-align: center;">{title}
+                        </h2>
+                        <p id="yap_large_card__description" style="margin: 0;">{description}</p>
+                    </a>
+                    <div style="text-align: right; position: absolute; top: 12px; right: 15px;">{gemini}</div>
+                </div>
+            </div>
+
+            <!-- HTML Preview Window -->
+            <h2 id="html-preview">HTML Preview</h2>
+            <div id="preview-container" class="preview-container" style="display: none">
+                <div id="preview" class="preview-content"></div>
+                <input id="copy-button" type="submit" value="Copy HTML">
+            </div>
+
+            <script>
+                // Show Placement Type Requirements Listener
+                function resetPlacementTypes() {
+                    document.getElementById('yap_container').style.display = "none";
+                    document.getElementById('yap_large_card').style.display = "none";
+                    document.getElementById('yahoo-flexbox-with-button-reqs').style.display = "none";
+                    document.getElementById('yahoo-large-card-reqs').style.display = "none";
+                }
+
+                function hideCTAButtonTextField() {
+                    document.getElementById("ad-cta").style.display = "none";
+                    document.getElementById("ad-cta-label").style.display = "none";
+                }
+
+                function showCTAButtonTextField() {
+                    document.getElementById("ad-cta").style.display = "block";
+                    document.getElementById("ad-cta-label").style.display = "block";
+                }
+
+                const placementTypeSelect = document.getElementById('placement-type');
+                placementTypeSelect.addEventListener('change', function (e) {
+                    
+                    resetPlacementTypes();
+
+                    if (e.target.value === "yahoo-flexbox-banner-with-button") {
+                        showCTAButtonTextField();
+                        document.getElementById('yap_container').style.display = "flex";
+                        document.getElementById('placement-reqs').style.display = "block";
+                        document.getElementById('yahoo-flexbox-with-button-reqs').style.display = "block";
+                    }
+                    if (e.target.value === "yahoo-large-card") {
+                        hideCTAButtonTextField();
+                        document.getElementById('yap_large_card').style.display = "block";
+                        document.getElementById('placement-reqs').style.display = "block";
+                        document.getElementById('yahoo-large-card-reqs').style.display = "block";
+                    }
+                });
+
+                // Image URL Listener + Preview
+                const adImageURLSelect = document.getElementById('image-url');
+                adImageURLSelect.addEventListener('change', function (e) {
+                    if (e.target && e.target.value) {
+                        document.getElementById('image-url-preview').src = e.target.value;
+                        document.getElementById('yahoo-large-card-preview').src = e.target.value;
+                    }
+                });
+                // adImageURLInput.addEventListener('input', () => {
+                //     adImageURLPreview.src = adImageURLInput.value;
+                // });
+
+                // Ad Title Listener + Preview
+                const adTitleInput = document.getElementById('ad-title');
+                const adTitlePreview = document.getElementById('ad-title-preview');
+                adTitleInput.addEventListener('input', () => {
+                    adTitlePreview.innerText = adTitleInput.value;
+                    document.getElementById("yap_large_card__title").textContent = adTitleInput.value;
+                });
+
+                // CTA Button Text Listener + Preview
+                const adCTASelect = document.getElementById('ad-cta');
+                const adCTAPreview = document.getElementById('ad-cta-preview');
+                adCTASelect.addEventListener('change', function (e) {
+                    if (e.target && e.target.value) {
+                        adCTAPreview.innerText = e.target.value;
+                    }
+                });
+
+                // Description Text Listener + Preview
+                const adDescriptionInput = document.getElementById('ad-description');
+                const adDescriptionPreview = document.getElementById('ad-description-preview');
+                adDescriptionInput.addEventListener('input', () => {
+                    adDescriptionPreview.innerText = adDescriptionInput.value;
+                    document.getElementById("yap_large_card__description").textContent = adDescriptionInput.value;
+                });
+
+                // Show Placement Type Requirements Listener
+                const advertiserNameSelect = document.querySelector('#advertiser-name');
+                const adAdvertiserNamePreview = document.getElementById('advertiser-name-preview');
+                const adSponsoredAdvertiserNamePreview = document.getElementById('sponsored-advertiser-name-preview');
+                advertiserNameSelect.addEventListener('change', function (e) {
+                    if (e.target && e.target.value) {
+                        adSponsoredAdvertiserNamePreview.innerHTML = `
+                            <span id="advertiser-name-preview" style="float: right;">Sponsored</span>
+                            Sponsored by ${e.target.value}
+                        `
+
+                        document.getElementById("yap_ad_spnsrd").textContent = `Sponsored: ${e.target.value}`;
+                    }
+                });
+
+                // Show HTML in Preview JS
+                const form = document.getElementById("form");
+                const previewContainer = document.querySelector(".preview-container");
+                const preview = document.getElementById("preview");
+                form.addEventListener("submit", e => {
+                    e.preventDefault();
+                    previewContainer.style.display = "block";
+                    const htmlCode = document.getElementById("yap_container").innerHTML;
+                    preview.innerText = htmlCode;
+                });
+
+                // Copy HTML Script
+                const button = document.getElementById('copy-button');
+                button.addEventListener('click', copyToClipboard);
+
+                function copyToClipboard() {
+                    const range = document.createRange();
+                    range.selectNode(preview);
+                    window.getSelection().addRange(range);
+                    document.execCommand('copy');
+                    window.getSelection().removeAllRanges();
+                    alert("HTML copied!")
+                }
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
