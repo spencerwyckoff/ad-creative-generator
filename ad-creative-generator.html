@@ -5,8 +5,15 @@
         /* TODO: Test on CORS enabled Web Server */
         /* @import url('https://fonts.yahooapis.com/css?family=YahooSansVF'); */
 
+        @font-face {
+            font-family: "Poppins";
+            src: url('fonts/Poppins-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
-            font: 13px/1.3 "YahooSansVF", Helvetica, Arial, sans-serif;
+            font: 13px/1.3 "Poppins", Helvetica, Arial, sans-serif;
             text-rendering: optimizeLegibility;
         }
 
@@ -61,20 +68,27 @@
             max-width: 500px;
         }
 
+        #form input[type="text"] {
+            background-color: #ffffff; /* Set the background color */
+            border: 1px solid #cccccc; /* Add a border */
+            color: #000000; /* Set the text color */
+            display: block;
+            padding: 5px 8px; /* Add some padding */
+            border-radius: 4px; /* Round the corners */
+            outline: none; /* Remove the default focus outline */
+            width: 100%;
+            }
+
+        #form input[type="text"]:focus {
+            border-color: #4D90FD; /* Change the border color on focus */
+            }
+
         #form-header {
             margin: 0 auto;
             width: 80%;
             max-width: 500px;
         }
 
-        label {
-            display: block; /* Display the label as a block element */
-            font-size: .8rem;
-            margin-bottom: .2rem; /* Add some margin at the bottom */
-            color: #000000; /* Set the text color */
-        }
-
-        form input,
         form select {
             width: 100%;
             margin-bottom: 1rem;
@@ -140,6 +154,12 @@
             max-width: 500px;
         }
 
+        #imported-content {
+            /* border: 1px solid black; */
+            height: 650px;
+            max-width: 90%;
+        }
+
         /* Style the preview content */
         .preview-content {
             font-size: 10px;
@@ -179,19 +199,27 @@
 
             <div class="column left-column">
                 <!-- Ad Creation Form -->
-                <h2 id="form-header">Ad Creation Form</h2>
+                <h2 id="form-header">Create an Ad Preview</h2>
                 <form id="form">
 
-                    <!-- Ad Placement Type -->
-                    <label for="placement-type">Placement Type</label>
+                    <!-- Ad Placement Types -->
+                    <p style="font-weight: 600">Select a Placement Type:</p>
+                    <input type="radio" id="pocket-native-tile" name="Firefox Native Tile" value="pocket-native-tile">
+                    <label for="pocket-native-tile">Firefox Native Tile</label>
+                    <br>
+                    <br>
+                    
+                    <!-- <label for="placement-type">Placement Type</label>
                     <select id="placement-type" name="placement-type">
                         <option value="">Select a placement type...</option>
+                        <option value="pocket-native-tile">Pocket - Native Tile</option>
                         <option value="yahoo-flexbox-banner-with-button">Yahoo - Flexbox Banner w/ Button</option>
                         <option value="yahoo-large-card">Yahoo - Large Card</option>
-                    </select>
+                        <option value="brave-scroll-tile">Brave - Scroll Tile</option>
+                    </select> -->
                     
                     <!-- Ad Placement Requirements tool -->
-                    <div id="placement-reqs" class="placement-reqs" style="display: none;">
+                    <!-- <div id="placement-reqs" class="placement-reqs" style="display: none;">
                         <div id="yahoo-flexbox-with-button-reqs" style="display: none">
                             <p><strong>Yahoo Flexbox w/ Button requirements:
                                     <a href="https://developer.yahoo.com/flurry/docs/publisher/code/native-web-templates#flexbox-banner-with-button"
@@ -216,19 +244,35 @@
                                 <li>Advertiser Name is required and max 30 characters</li>
                             </ul>
                         </div>
-                    </div>
-                    <br>
+                    </div> -->
+                    
                     <!-- Image URL Selector / Input -->
-                    <label for="image-url">Image URL</label>
+                    <label for="image-url" style="font-weight: 600">Image URL:</label>
+                    <input type="text" name="image-url" id="image-url">
+                    <br>
+                    <label for="advertiser-name" style="font-weight: 600">Advertiser Name:</label>
+                    <input type="text" name="advertiser-name" id="advertiser-name">
+                    <br>
+                    <label for="advertiser-url" style="font-weight: 600">Advertiser URL:</label>
+                    <input type="text" name="advertiser-url" id="advertiser-url">
+                    <br>
+                    <label for="ad-title" style="font-weight: 600">Headline:</label>
+                    <input type="text" name="ad-title" id="ad-title">
+                    <br>
+                    <label for="ad-description" style="font-weight: 600">Description:</label>
+                    <input type="text" name="ad-description" id="ad-description">
+                   
+                    <!-- <label for="image-url-select">Image URL</label> -->
                     <!-- <input type="url" id="image-url" name="image-url" value="https://cdn.adtechnacity.com/29b42e46d0224b05b4c77a4cc9c884ac.png"><br> -->
-                    <select id="image-url" name="image-url">
+                    <!-- <select id="image-url-select" name="image-url">
                         <option value="">Select an approved image...</option>
                         <option value="https://cdn.adtechnacity.com/29b42e46d0224b05b4c77a4cc9c884ac.png">JenniferCarCC</option>
                         <option value="https://cdn.adtechnacity.com/67f33d30095b4204971d67091c85aa43.jpg">CC23image3</option>
                         <option value="https://cdn.adtechnacity.com/dc08da2e1f8e4644b8a02cf7576fb37e.jpg">WomanBoxesv3Fireplace</option>
                         <option value="https://cdn.adtechnacity.com/fe0c5e950d4441698dccb6ed12106510.png">WomanBoxesGreen</option>
-                    </select>
-                    <label for="ad-title">Title</label>
+                        <option value="https://cdn.adtechnacity.com/245fac38c6db4532a43f4a000ee4b722.jpg">WomanBoxesv3</option>
+                    </select> -->
+                    <!-- <label for="ad-title">Title</label>
                     <input type="text" id="ad-title" name="ad-title">
                     <label for="ad-description">Description</label>
                     <input type="text" id="ad-description" name="ad-description">
@@ -237,7 +281,6 @@
                         <option value="">Select an sponsor...</option>
                         <option value="OnlineShoppingTools">OnlineShoppingTools</option>
                         <option value="GetFreeCoupons">GetFreeCoupons</option>
-                        <option value="CompareCredit">CompareCredit</option>
                     </select>
                     <label id="ad-cta-label" for="ad-cta" style="display:none">CTA Button Text</label>
                     <select id="ad-cta" name="ad-cta" style="display:none">
@@ -299,229 +342,280 @@
                         <option value="Watch Now">Watch Now</option>
                         <option value="Watch More">Watch More</option>
                     </select><br><br>
-                    <input type="submit" value="Generate HTML">
+                    <input type="submit" value="Generate HTML"> -->
                 </form>
             </div>
 
             <div class="column right-column">
                 <!-- Ad Preview  -->
                 <h2 id="ad-preview">Ad Preview</h2>
+                <object id="imported-content" data="" type="text/html"></object>
 
-                <!-- Yahoo Flexbox Banner w/ Button -->
-                <div id="yap_container" class="yap_container"
-                    style="display: flex; flex-wrap: nowrap; align-items: flex-start; align-content: center; justify-content: flex-start; background-color: #EEEEEE; margin-bottom: 10px; clear: both; padding: 10px;">
-                    <div class="yap_image" style="flex: auto;">
-                        <a href="{click_url}" style="text-decoration: none; color: #000;"> 
-                            <img id="image-url-preview" src="" style="background-color: transparent; height: 156px; width: 300px; background-size: cover !important;">
-                        </a>
-                    </div>
-                    <div class="yap_text" style="width: 100%;padding: 0 10px;">
-                        <a href="{click_url}" style="text-decoration: none; color: #000;">
-                            <p id="sponsored-advertiser-name-preview"
-                                style="font-size: 11px; color: #4D90FD; padding: 0; margin: 0 0 5px 0;">
-                                <span id="advertiser-name-preview" style="float: right;">{gemini}</span>
-                                Sponsored by {sponsor}
-                            </p>
-                            <h2 id="ad-title-preview" style="margin: 0 0 5px 0; padding: 0;">{title}</h2>
-                            <p id="ad-description-preview">{description}</p>
-                            <p id="ad-cta-preview"
-                                style="display: inline; background-color: #4D90FD; color: white; padding: 10px; line-height: 40px; border-radius: 5px">
-                                {callToAction}</p>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Yahoo Large Card -->
-                <div id="yap_large_card"
-                    style="display: none; width: 500px; min-height: 320px; padding: 0px; clear: both; background-color: transparent; border: 1px solid rgb(192, 192, 192); border-radius: 5px; position: relative !important; text-align: center !important;">
-                    <div class="yap_img" style="position: relative !important;">
-                        <a href="{click_url}" target="_blank" style="display: block; color: #FFF;">
-                            <img id="yahoo-large-card-preview" src=""
-                                style="background-size: cover !important; width: 100% !important; height: 261px !important;"
-                                alt="{title}">
-                            <p id="yap_ad_spnsrd" class="yap_ad_spnsrd"
-                                style="font-size: 14px; position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.3); padding: 5px; margin: 0 14px 8px 0;">
-                                Sponsored: {sponsor}</p>
-                        </a>
-                    </div>
-                    <div class="yap_ad_txt" style="width: 95%; margin: auto; text-align: center;">
-                        <a href="{click_url}" target="_blank"
-                            style="display: block !important; color: #000; text-decoration: none;">
-                            <h2 id="yap_large_card__title" style="margin-bottom: 0; font-weight: bold; font-size: 20px; text-align: center;">{title}
-                            </h2>
-                            <p id="yap_large_card__description" style="margin: 0;">{description}</p>
-                        </a>
-                        <div style="text-align: right; position: absolute; top: 12px; right: 15px;">{gemini}</div>
-                    </div>
-                </div>
-
-                <!-- HTML Preview Window -->
-                <h2 id="html-preview">Ad HTML</h2>
+                <!-- HTML Preview -->
+                <!-- <h2 id="html-preview">Ad HTML</h2>
                 <div id="preview-container" class="preview-container" style="display: block">
                     <div id="preview" class="preview-content"></div>
                 </div><br>
-                <input id="copy-button" type="submit" value="Copy HTML" style="display: none">
-
-                <script>
-                    // Show Placement Type Requirements Listener
-                    function resetPlacementTypes() {
-                        document.getElementById('yap_container').style.display = "none";
-                        document.getElementById('yap_large_card').style.display = "none";
-                        document.getElementById('yahoo-flexbox-with-button-reqs').style.display = "none";
-                        document.getElementById('yahoo-large-card-reqs').style.display = "none";
-                    }
-
-                    function hideCTAButtonTextField() {
-                        document.getElementById("ad-cta").style.display = "none";
-                        document.getElementById("ad-cta-label").style.display = "none";
-                    }
-
-                    function showCTAButtonTextField() {
-                        document.getElementById("ad-cta").style.display = "block";
-                        document.getElementById("ad-cta-label").style.display = "block";
-                    }
-
-                    const placementTypeSelect = document.getElementById('placement-type');
-                    placementTypeSelect.addEventListener('change', function (e) {
-                        
-                        resetPlacementTypes();
-
-                        if (e.target.value === "yahoo-flexbox-banner-with-button") {
-                            showCTAButtonTextField();
-                            document.getElementById('yap_container').style.display = "flex";
-                            document.getElementById('placement-reqs').style.display = "block";
-                            document.getElementById('yahoo-flexbox-with-button-reqs').style.display = "block";
-                        }
-                        if (e.target.value === "yahoo-large-card") {
-                            hideCTAButtonTextField();
-                            document.getElementById('yap_large_card').style.display = "block";
-                            document.getElementById('placement-reqs').style.display = "block";
-                            document.getElementById('yahoo-large-card-reqs').style.display = "block";
-                        }
-                    });
-
-                    // Image URL Listener + Preview
-                    const adImageURLSelect = document.getElementById('image-url');
-                    adImageURLSelect.addEventListener('change', function (e) {
-                        if (e.target && e.target.value) {
-                            document.getElementById('image-url-preview').src = e.target.value;
-                            document.getElementById('yahoo-large-card-preview').src = e.target.value;
-                        }
-                    });
-                    // adImageURLInput.addEventListener('input', () => {
-                    //     adImageURLPreview.src = adImageURLInput.value;
-                    // });
-
-                    // Ad Title Listener + Preview
-                    const adTitleInput = document.getElementById('ad-title');
-                    const adTitlePreview = document.getElementById('ad-title-preview');
-                    adTitleInput.addEventListener('input', () => {
-                        adTitlePreview.innerText = adTitleInput.value;
-                        document.getElementById("yap_large_card__title").textContent = adTitleInput.value;
-                    });
-
-                    // CTA Button Text Listener + Preview
-                    const adCTASelect = document.getElementById('ad-cta');
-                    const adCTAPreview = document.getElementById('ad-cta-preview');
-                    adCTASelect.addEventListener('change', function (e) {
-                        if (e.target && e.target.value) {
-                            adCTAPreview.innerText = e.target.value;
-                        }
-                    });
-
-                    // Description Text Listener + Preview
-                    const adDescriptionInput = document.getElementById('ad-description');
-                    const adDescriptionPreview = document.getElementById('ad-description-preview');
-                    adDescriptionInput.addEventListener('input', () => {
-                        adDescriptionPreview.innerText = adDescriptionInput.value;
-                        document.getElementById("yap_large_card__description").textContent = adDescriptionInput.value;
-                    });
-
-                    // Show Placement Type Requirements Listener
-                    const advertiserNameSelect = document.querySelector('#advertiser-name');
-                    const adAdvertiserNamePreview = document.getElementById('advertiser-name-preview');
-                    const adSponsoredAdvertiserNamePreview = document.getElementById('sponsored-advertiser-name-preview');
-                    advertiserNameSelect.addEventListener('change', function (e) {
-                        if (e.target && e.target.value) {
-                            adSponsoredAdvertiserNamePreview.innerHTML = `
-                                <span id="advertiser-name-preview" style="float: right;">Sponsored</span>
-                                Sponsored by ${e.target.value}
-                            `
-
-                            document.getElementById("yap_ad_spnsrd").textContent = `Sponsored: ${e.target.value}`;
-                        }
-                    });
-
-                    // Generate HTML Button Click
-                    const form = document.getElementById("form");
-                    const previewContainer = document.querySelector(".preview-container");
-                    const copyHTMLButton = document.getElementById("copy-button");
-                    const preview = document.getElementById("preview");
-                    form.addEventListener("submit", e => {
-                        e.preventDefault();
-                        previewContainer.style.display = "block";
-                        copyHTMLButton.style.display = "block";
-                        const htmlCode = indentHTML(document.getElementById("yap_container").innerHTML);
-                        preview.innerText = htmlCode;
-                    });
-
-                    // Copy HTML Script
-                    const button = document.getElementById('copy-button');
-                    button.addEventListener('click', copyToClipboard);
-
-                    function copyToClipboard() {
-                        const range = document.createRange();
-                        range.selectNode(preview);
-                        window.getSelection().addRange(range);
-                        document.execCommand('copy');
-                        window.getSelection().removeAllRanges();
-                        alert("HTML copied!")
-                    }
-
-                    function indentHTML(html) {
-                        // Split the HTML into lines
-                        var lines = html.split('\n');
-
-                        // Initialize the indent level and the output HTML
-                        var indentLevel = 0;
-                        var outputHTML = '';
-
-                        // Loop through the lines
-                        for (var i = 0; i < lines.length; i++) {
-                            var line = lines[i].trim(); // Trim leading and trailing whitespace from the line
-
-                            // If the line is a closing tag, decrease the indent level
-                            if (line.startsWith('</')) {
-                            indentLevel--;
-                            }
-
-                            // Add the indentation to the beginning of the line
-                            line = '  '.repeat(indentLevel) + line;
-
-                            // Add the line to the output HTML
-                            outputHTML += line + '\n';
-
-                            // If the line is an opening tag, increase the indent level
-                            if (line.startsWith('<') && !line.endsWith('/>')) {
-                            indentLevel++;
-                            }
-                        }
-                        return outputHTML;
-                    }
-
-
-                </script>
+                <input id="copy-button" type="submit" value="Copy HTML" style="display: none"> -->
             </div>
-
         </div>  
-
-
     </div>
-</body>
+                
+                
+    <script>
+        
+        const importedAdPreview = document.getElementById("imported-content");
+        const yahooLargeCardRequirements = document.getElementById('yahoo-large-card-reqs');
+        const yahooFlexboxWithButton = document.getElementById('yahoo-flexbox-with-button-reqs');    
 
+        const imageURLInput = document.getElementById('image-url');
+        const advertiserNameInput = document.getElementById('advertiser-name');
+        const advertiserURLInput = document.getElementById('advertiser-url');
+        const adTitleInput = document.getElementById('ad-title');
+        const adDescriptionInput = document.getElementById('ad-description');
+        // const adCTASelect = document.getElementById('ad-cta');
+
+        imageURLInput.addEventListener('input', function (e) {
+            if (e.target && e.target.value) {
+                importedAdPreview.contentWindow.document.querySelector('#image-url-preview').setAttribute('src', e.target.value);
+            }
+        });
+
+        advertiserNameInput.addEventListener('input', function (e) {
+            if (e.target && e.target.value) {
+                importedAdPreview.contentWindow.document.querySelector('#sponsored-advertiser-name-preview').innerHTML = `Sponsored by ${e.target.value}`;
+            }
+        });
+
+        advertiserURLInput.addEventListener('input', function (e) {
+            if (e.target && e.target.value) {
+                importedAdPreview.contentWindow.document.querySelector('#advertiser-url-preview').innerHTML = e.target.value;
+            }
+        });
+
+        adTitleInput.addEventListener('input', function (e) {
+            if (e.target && e.target.value) {
+                importedAdPreview.contentWindow.document.querySelector('#ad-title-preview').innerHTML = e.target.value;
+            }
+        });
+
+        adDescriptionInput.addEventListener('input', function (e) {
+            if (e.target && e.target.value) {
+                importedAdPreview.contentWindow.document.querySelector('#ad-description-preview').innerHTML = e.target.value;
+            }
+        });
+        
+        window.onload = onPageLoad();
+
+        function onPageLoad() {
+            setFontFamily();
+            selectPlacementType("pocket-native-tile");
+        }
+
+        function setFontFamily() {
+            // Check if the HTML is being served locally
+            if (window.location.protocol === 'file:') {
+                // If the HTML is being served locally, include the local font URL
+                document.head.innerHTML += '<link href="path/to/local/font.css" rel="stylesheet">';
+            } else {
+                // If the HTML is not being served locally, include the remote font URL
+                document.head.innerHTML += '<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">';
+            }
+        }
+
+        function selectPlacementType(id) {
+            document.getElementById(id).checked = true;
+            loadPlacementPreview(id);
+        }
+
+        function loadPlacementPreview(id) {
+            switch(id) {
+                case "pocket-native-tile": 
+                    importedAdPreview.setAttribute('data','pocket-native-tile.html');    
+                    break;
+                case "yahoo-flexbox-banner-with-button": 
+                    importedAdPreview.setAttribute('data','yahoo-flexbox-banner-with-button.html');    
+                    break;
+                case "yahoo-large-card": 
+                    importedAdPreview.setAttribute('data','yahoo-large-card.html');    
+                    break;
+                case "brave-scroll-tile": 
+                    importedAdPreview.setAttribute('data','brave-scroll-tile.html');    
+                    break;
+            }
+        }
+
+        function updateDefaultValues() {
+            imageURLInput.value = 'https://cdn.adtechnacity.com/e6469e9b92564a3fa1bc8e7769dd0588.png';
+            advertiserNameInput.value = 'Capital One Shopping';
+            advertiserURLInput.value = 'capitaloneshopping.com';
+            adTitleInput.value = 'Prime is now $179, But Few Know This Free Savings Hack (New For 2023)';
+            adDescriptionInput.value = 'This simple trick can save tons of money on Amazon, but most Prime members are ignoring it.';
+        }
+        
+        // Show Placement Type Requirements Listener
+        function resetPlacementTypes() {
+        }
+
+        function hideCTAButtonTextField() {
+            document.getElementById("ad-cta").style.display = "none";
+            document.getElementById("ad-cta-label").style.display = "none";
+        }
+
+        function showCTAButtonTextField() {
+            document.getElementById("ad-cta").style.display = "block";
+            document.getElementById("ad-cta-label").style.display = "block";
+        }
+
+
+        // const placementTypeSelect = document.getElementById('placement-type');
+        // placementTypeSelect.addEventListener('change', function (e) {
+            
+        //     resetPlacementTypes();
+
+        //     console.log(e.target.value);
+
+        //     if (e.target.value === "yahoo-flexbox-banner-with-button") {
+        //         showCTAButtonTextField();
+        //         document.getElementById('placement-reqs').style.display = "block";
+        //         document.getElementById('yahoo-flexbox-with-button-reqs').style.display = "block";
+        //         importedAdPreview.setAttribute('data', 'yahoo-flexbox-banner-with-button.html');
+        //     }
+        //     if (e.target.value === "yahoo-large-card") {
+        //         hideCTAButtonTextField();
+        //         document.getElementById('placement-reqs').style.display = "block";
+        //         document.getElementById('yahoo-large-card-reqs').style.display = "block";
+        //         importedAdPreview.setAttribute('data', 'yahoo-large-card.html');
+        //     }
+        //     if (e.target.value === "brave-scroll-tile") {
+        //         showCTAButtonTextField();
+        //         importedAdPreview.setAttribute('data', 'brave-scroll-tile.html');
+        //     }
+        //     if (e.target.value === "pocket-native-tile") {
+        //         importedAdPreview.setAttribute('data', 'pocket-native-tile.html');
+        //     }
+        // });
+
+        // Image URL Listener + Preview
+        // const adImageURLSelect = document.getElementById('image-url');
+        // adImageURLInput.addEventListener('change', function (e) {
+        //     if (e.target && e.target.value) {
+        //         importedAdPreview.contentWindow.document.getElementById('ad-img').setAttribute('src', e.target.value);
+        //     }
+        // });
+
+        // adImageURLInput.addEventListener('input', () => {
+        //     adImageURLPreview.src = adImageURLInput.value;
+        // });
+
+        // Ad Title Listener + Preview
+        // const adTitleInput = document.getElementById('ad-title');
+        // const adTitlePreview = document.getElementById('ad-title-preview');
+        // adTitleInput.addEventListener('input', () => {
+        //     adTitlePreview.innerText = adTitleInput.value;
+        //     document.getElementById("yap_large_card__title").textContent = adTitleInput.value;
+        // });
+
+        // CTA Button Text Listener + Preview
+        // const adCTASelect = document.getElementById('ad-cta');
+        // const adCTAPreview = document.getElementById('ad-cta-preview');
+        // adCTASelect.addEventListener('change', function (e) {
+        //     if (e.target && e.target.value) {
+        //         adCTAPreview.innerText = e.target.value;
+        //     }
+        // });
+
+        // Description Text Listener + Preview
+        // const adDescriptionInput = document.getElementById('ad-description');
+        // const adDescriptionPreview = document.getElementById('ad-description-preview');
+        // adDescriptionInput.addEventListener('input', () => {
+        //     adDescriptionPreview.innerText = adDescriptionInput.value;
+        //     document.getElementById("yap_large_card__description").textContent = adDescriptionInput.value;
+        // });
+
+        // Show Placement Type Requirements Listener
+        // const advertiserNameSelect = document.querySelector('#advertiser-name');
+        // const adAdvertiserNamePreview = document.getElementById('advertiser-name-preview');
+        // const adSponsoredAdvertiserNamePreview = document.getElementById('sponsored-advertiser-name-preview');
+
+
+        // Generate HTML Button Click
+        // const form = document.getElementById("form");
+        // const previewContainer = document.querySelector(".preview-container");
+        // const copyHTMLButton = document.getElementById("copy-button");
+        // const preview = document.getElementById("preview");
+        // form.addEventListener("submit", e => {
+        //     e.preventDefault();
+        //     previewContainer.style.display = "block";
+        //     copyHTMLButton.style.display = "block";
+        //     const htmlCode = indentHTML(document.getElementById("yap_container").innerHTML);
+        //     preview.innerText = htmlCode;
+        // });
+
+        // Copy HTML Script
+        // const button = document.getElementById('copy-button');
+        // button.addEventListener('click', copyToClipboard);
+
+        // function copyToClipboard() {
+        //     const range = document.createRange();
+        //     range.selectNode(preview);
+        //     window.getSelection().addRange(range);
+        //     document.execCommand('copy');
+        //     window.getSelection().removeAllRanges();
+        //     alert("HTML copied!")
+        // }
+
+        // function indentHTML(html) {
+        //     // Split the HTML into lines
+        //     var lines = html.split('\n');
+
+        //     // Initialize the indent level and the output HTML
+        //     var indentLevel = 0;
+        //     var outputHTML = '';
+
+        //     // Loop through the lines
+        //     for (var i = 0; i < lines.length; i++) {
+        //         var line = lines[i].trim(); // Trim leading and trailing whitespace from the line
+
+        //         // If the line is a closing tag, decrease the indent level
+        //         if (line.startsWith('</')) {
+        //         indentLevel--;
+        //         }
+
+        //         // Add the indentation to the beginning of the line
+        //         line = '  '.repeat(indentLevel) + line;
+
+        //         // Add the line to the output HTML
+        //         outputHTML += line + '\n';
+
+        //         // If the line is an opening tag, increase the indent level
+        //         if (line.startsWith('<') && !line.endsWith('/>')) {
+        //         indentLevel++;
+        //         }
+        //     }
+        //     return outputHTML;
+        // }
+
+        // Load the JSON file
+        // function fetchDataValidations () {
+        //     fetch('data/ad-platforms.json')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data.platforms);
+        //     });
+        // }
+        // fetchDataValidations();
+
+        // window.onload = onPageLoad();
+    </script>
+</body>
 </html>
 
 
 
-
-
+<!-- TODO: Ad Headlines Dropdown -->
+<!-- 2 Cards Charging 0% Interest Until Nearly 2025
+3 Cards Charging 0% Interest Until Nearly 2025
+2 Cards Charging 0% Interest Until Nearly 2025
+Prime is now $179, But Few Know This Savings Hack (New For 2023)
+Prime is now $179, But Few Know This Free Savings Hack (New For 2023) -->

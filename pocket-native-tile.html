@@ -1,0 +1,153 @@
+<html>
+	<head>
+		<style>
+			* {
+				box-sizing: inherit;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Ubuntu", "Helvetica Neue", sans-serif;
+			}
+			a {
+				text-decoration: none;
+			}
+			.ds-card {
+				background: white;
+				border-radius: 8px;
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+				height: 362px;
+				width: 296px;
+				display: flex;
+				flex-direction: column;
+				position: relative;
+			}
+			.ds-card .ds-card-link {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			.ds-card .img-wrapper {
+				width: 100%;
+				position: relative;
+			}
+			.ds-image {
+				display: block;
+				position: relative;
+			}
+			.ds-card .img {
+				height: 0;
+				padding-top: 50%;
+			}
+			.ds-image img, 
+			.ds-image .placeholder-image, 
+			.ds-image .broken-image {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.ds-card .img img {
+				border-radius: 8px 8px 0 0;
+				box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+			}
+			.ds-card .meta {
+				display: flex;
+				flex-direction: column;
+				padding: 12px 16px;
+				flex-grow: 1;
+			}
+			.ds-card .meta .info-wrap {
+				flex-grow: 1;
+			}
+			.ds-card .meta .source {
+				-webkit-line-clamp: 1;
+				margin-bottom: 2px;
+				font-size: 13px;
+				color: #15141a;
+			}
+			.ds-card p {
+				font-size: 14px;
+				line-height: 20px;
+				color: #15141a;
+				margin: 0;
+			}
+			.clamp {
+				-webkit-box-orient: vertical;
+				display: -webkit-box;
+				overflow: hidden;
+				word-break: break-word;
+			}
+			.ds-card .meta .title {
+				font-size: 17px;
+				-webkit-line-clamp: 3;
+				line-height: 24px;
+				font-weight: 600;
+			}
+			.ds-card header {
+				color: #15141a;
+			}
+			.ds-card .meta .excerpt {
+				font-size: 14px;
+				-webkit-line-clamp: 3;
+				line-height: 20px;
+			}
+			.story-footer {
+				color: #353439;
+				inset-inline-start: 0;
+				margin-top: 12px;
+				position: relative;
+			}
+			.story-footer .story-sponsored-label, 
+			.story-footer .status-message {
+				-webkit-line-clamp: 1;
+				font-size: 13px;
+				line-height: 24px;
+				color: #353439;
+			}
+			.story-footer .story-sponsored-label span {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ds-card   ds-card-title-lines-3 ds-card-desc-lines-3">
+			<a href="https://cos-rd.com/zf/50/8947?campaign=FF-OST01-Pricing&amp;creative=AmazonTruckStuckinSnow-PrimeIsNow179ButFewKnowThisFreeSavingsHackNewFor2023-ThisSimpleTrickCanSaveTonsOfMoneyOnAmazonButMostPrimeMembersAreIgnoringIt-20230109" class="ds-card-link">
+				<div class="img-wrapper">
+					<picture class="ds-image img use-transition	loaded">
+						<img id="image-url-preview"
+							loading="lazy" 
+							crossorigin="anonymous" 
+							sizes="(min-width: 1122px) 296px,(min-width: 866px) 218px,(max-width: 610px) 202px,202px"
+							src=""
+							title="Image URL"
+							>
+					</picture>
+				</div>
+				<div class="meta">
+					<div class="info-wrap">
+						<p id="advertiser-url-preview" class="source clamp">{{Advertiser URL}}</p>
+						<header id="ad-title-preview" title="Prime is now $179, But Few Know This Free Savings Hack (New For 2023)" class="title clamp">{{Headline}}</header>
+						<p id="ad-description-preview" class="excerpt clamp">{{Description}}</p>
+					</div>
+					<div class="story-footer">
+						<p class="story-sponsored-label clamp">
+							<span id="sponsored-advertiser-name-preview">Sponsored by {{Advertiser Name}}</span>
+						</p>
+					</div>
+				</div>
+				<div class="impression-observer"></div>
+			</a>
+			<!-- <div class="card-stp-button-hover-background">
+				<div class="card-stp-button-position-wrapper">
+					<div class="context-menu-position-container">
+						<button aria-haspopup="true" 
+							data-l10n-id="newtab-menu-content-tooltip" 
+							data-l10n-args="{&quot;title&quot;:&quot;Prime is now $179, But Few Know This Free Savings Hack (New For 2023)&quot;}" 
+							class="context-menu-button icon" 
+							title="Open menu" 
+							aria-label="Open context menu for Prime is now $179, But Few Know This Free Savings Hack (New For 2023)"
+						></button>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</body>
+</html>
