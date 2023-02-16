@@ -141,10 +141,6 @@
             height: auto;
         }
 
-        .yap_container {
-            max-width: 90%;
-        }
-
         .preview-container {
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -200,12 +196,22 @@
             <div class="column left-column">
                 <!-- Ad Creation Form -->
                 <h2 id="form-header">Create an Ad Preview</h2>
-                <form id="form">
+                <form id="form" name="adCreationForm">
 
                     <!-- Ad Placement Types -->
                     <p style="font-weight: 600">Select a Placement Type:</p>
-                    <input type="radio" id="pocket-native-tile" name="Firefox Native Tile" value="pocket-native-tile">
-                    <label for="pocket-native-tile">Firefox Native Tile</label>
+                    <div>
+                        <input type="radio" id="pocket-native-tile" name="placementType" value="pocket-native-tile">
+                        <label for="pocket-native-tile">Firefox Native Tile</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="yahoo-banner-with-button" name="placementType" value="yahoo-banner-with-button">
+                        <label for="yahoo-banner-with-button">Yahoo Banner w/ Button</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="yahoo-large-card" name="placementType" value="yahoo-large-card">
+                        <label for="yahoo-large-card">Yahoo Large Card</label>
+                    </div>
                     <br>
                     <br>
                     
@@ -250,9 +256,6 @@
                     <label for="image-url" style="font-weight: 600">Image URL:</label>
                     <input type="text" name="image-url" id="image-url">
                     <br>
-                    <label for="advertiser-name" style="font-weight: 600">Advertiser Name:</label>
-                    <input type="text" name="advertiser-name" id="advertiser-name">
-                    <br>
                     <label for="advertiser-url" style="font-weight: 600">Advertiser URL:</label>
                     <input type="text" name="advertiser-url" id="advertiser-url">
                     <br>
@@ -261,6 +264,9 @@
                     <br>
                     <label for="ad-description" style="font-weight: 600">Description:</label>
                     <input type="text" name="ad-description" id="ad-description">
+                    <br>
+                    <label for="advertiser-name" style="font-weight: 600">Advertiser Name:</label>
+                    <input type="text" name="advertiser-name" id="advertiser-name">
                    
                     <!-- <label for="image-url-select">Image URL</label> -->
                     <!-- <input type="url" id="image-url" name="image-url" value="https://cdn.adtechnacity.com/29b42e46d0224b05b4c77a4cc9c884ac.png"><br> -->
@@ -348,7 +354,7 @@
 
             <div class="column right-column">
                 <!-- Ad Preview  -->
-                <h2 id="ad-preview">Ad Preview</h2>
+                <h2>Ad Preview</h2>
                 <object id="imported-content" data="" type="text/html"></object>
 
                 <!-- HTML Preview -->
@@ -364,51 +370,72 @@
                 
     <script>
         
-        const importedAdPreview = document.getElementById("imported-content");
-        const yahooLargeCardRequirements = document.getElementById('yahoo-large-card-reqs');
-        const yahooFlexboxWithButton = document.getElementById('yahoo-flexbox-with-button-reqs');    
-
+        // Placements
+        const firefoxNativeTile = document.getElementById('firefox-native-tile');
+        const yahooLargeCard = document.getElementById('yahoo-large-banner');
+        const yahooBannerWithButton= document.getElementById('yahoo-banner-with-button');    
+        
+        // Form fields
         const imageURLInput = document.getElementById('image-url');
         const advertiserNameInput = document.getElementById('advertiser-name');
         const advertiserURLInput = document.getElementById('advertiser-url');
-        const adTitleInput = document.getElementById('ad-title');
+        const adHeadlineInput = document.getElementById('ad-title');
         const adDescriptionInput = document.getElementById('ad-description');
         // const adCTASelect = document.getElementById('ad-cta');
 
+        // Preview Window
+        const importedAdPreview = document.getElementById("imported-content");
+
+        // Listeners
+        // yahooBannerWithButton.addEventListener('change', function (e) {
+        //     if (e.target && e.target.value) {
+        //         console.log("Yahoo Banner w/ Button changed");
+        //         // importedAdPreview.contentWindow.document.querySelector('#sponsored-advertiser-name-preview').innerHTML = `Sponsored by ${e.target.value}`;
+        //     }
+        // });
+
         imageURLInput.addEventListener('input', function (e) {
             if (e.target && e.target.value) {
-                importedAdPreview.contentWindow.document.querySelector('#image-url-preview').setAttribute('src', e.target.value);
+                console.log("Image URL changed");
+                if (isValidHttpUrl(e.target.value)) {
+                    document.getElementById("imported-content").contentWindow.document.querySelector('#image-url-preview').setAttribute('src', e.target.value);
+                }
             }
         });
 
         advertiserNameInput.addEventListener('input', function (e) {
             if (e.target && e.target.value) {
-                importedAdPreview.contentWindow.document.querySelector('#sponsored-advertiser-name-preview').innerHTML = `Sponsored by ${e.target.value}`;
+                console.log("Advertiser Name changed");
+                document.getElementById("imported-content").contentWindow.document.querySelector('#sponsored-advertiser-name-preview').innerText = `Sponsored by ${e.target.value}`;
             }
         });
 
         advertiserURLInput.addEventListener('input', function (e) {
             if (e.target && e.target.value) {
-                importedAdPreview.contentWindow.document.querySelector('#advertiser-url-preview').innerHTML = e.target.value;
+                console.log("Advertiser URL changed");
+                document.getElementById("imported-content").contentWindow.document.querySelector('#advertiser-url-preview').innerHTML = e.target.value;
             }
         });
 
-        adTitleInput.addEventListener('input', function (e) {
+        adHeadlineInput.addEventListener('input', function (e) {
             if (e.target && e.target.value) {
-                importedAdPreview.contentWindow.document.querySelector('#ad-title-preview').innerHTML = e.target.value;
+                console.log("Headline changed");
+                document.getElementById("imported-content").contentWindow.document.querySelector('#ad-title-preview').innerHTML = e.target.value;
             }
         });
 
         adDescriptionInput.addEventListener('input', function (e) {
             if (e.target && e.target.value) {
-                importedAdPreview.contentWindow.document.querySelector('#ad-description-preview').innerHTML = e.target.value;
+                console.log("Description changed");
+                document.getElementById("imported-content").contentWindow.document.querySelector('#ad-description-preview').innerHTML = e.target.value;
             }
         });
-        
+
         window.onload = onPageLoad();
 
         function onPageLoad() {
             setFontFamily();
+            setupEventListeners();
             selectPlacementType("pocket-native-tile");
         }
 
@@ -428,20 +455,51 @@
             loadPlacementPreview(id);
         }
 
+        function removeHTML(input) {
+            console.log("Resetting Ad Preview", input);
+            console.log(input.firstElementChild);
+            document.getElementById("imported-content").innerHTML = "";
+            document.getElementById("imported-content").setAttribute('data', "");
+            // let tmp = document.createElement('div');
+            // tmp.innerHTML = input;
+            // return tmp.textContent || tmp.innerText || '';
+        };
+
         function loadPlacementPreview(id) {
-            switch(id) {
-                case "pocket-native-tile": 
-                    importedAdPreview.setAttribute('data','pocket-native-tile.html');    
-                    break;
-                case "yahoo-flexbox-banner-with-button": 
-                    importedAdPreview.setAttribute('data','yahoo-flexbox-banner-with-button.html');    
-                    break;
-                case "yahoo-large-card": 
-                    importedAdPreview.setAttribute('data','yahoo-large-card.html');    
-                    break;
-                case "brave-scroll-tile": 
-                    importedAdPreview.setAttribute('data','brave-scroll-tile.html');    
-                    break;
+            const importedAdPreview = document.getElementById("imported-content");
+            console.log("Loading the Placement in Preview", id);
+            console.log("Before", importedAdPreview);
+            
+            importedAdPreview.innerHTML = "";
+
+            if (id === "pocket-native-tile") {
+                importedAdPreview.setAttribute('data','pocket-native-tile.html');    
+            }
+            if (id === "yahoo-banner-with-button") {
+                importedAdPreview.setAttribute('data','yahoo-flexbox-banner-with-button.html');    
+            }
+            if (id === "yahoo-large-card") {
+                importedAdPreview.setAttribute('data','yahoo-large-card.html');    
+            }
+            if (id === "brave-scroll-tile") {
+                importedAdPreview.setAttribute('data','brave-scroll-tile.html');    
+            }
+            
+            console.log("After", importedAdPreview);
+        }
+
+        function setupEventListeners() {
+            var rad = document.adCreationForm.placementType;
+            var prev = null;
+            for (var i = 0; i < rad.length; i++) {
+                rad[i].addEventListener('change', function() {
+                    (prev) ? console.log("previous: ", prev.value): null;
+                    if (this !== prev) {
+                        prev = this;
+                    }
+                    console.log("current: ", this.value);
+                    selectPlacementType(this.value);
+                });
             }
         }
 
@@ -449,12 +507,23 @@
             imageURLInput.value = 'https://cdn.adtechnacity.com/e6469e9b92564a3fa1bc8e7769dd0588.png';
             advertiserNameInput.value = 'Capital One Shopping';
             advertiserURLInput.value = 'capitaloneshopping.com';
-            adTitleInput.value = 'Prime is now $179, But Few Know This Free Savings Hack (New For 2023)';
+            adHeadlineInput.value = 'Prime is now $179, But Few Know This Free Savings Hack (New For 2023)';
             adDescriptionInput.value = 'This simple trick can save tons of money on Amazon, but most Prime members are ignoring it.';
+        }
+
+        function isValidHttpUrl(string) {
+            let url;
+            try {
+                url = new URL(string);
+            } catch (_) {
+                return false;
+            }
+            return url.protocol === "http:" || url.protocol === "https:";
         }
         
         // Show Placement Type Requirements Listener
-        function resetPlacementTypes() {
+        function resetAdPreview() {
+            removeHTML(document.querySelector())
         }
 
         function hideCTAButtonTextField() {
@@ -509,11 +578,11 @@
         // });
 
         // Ad Title Listener + Preview
-        // const adTitleInput = document.getElementById('ad-title');
+        // const adHeadlineInput = document.getElementById('ad-title');
         // const adTitlePreview = document.getElementById('ad-title-preview');
-        // adTitleInput.addEventListener('input', () => {
-        //     adTitlePreview.innerText = adTitleInput.value;
-        //     document.getElementById("yap_large_card__title").textContent = adTitleInput.value;
+        // adHeadlineInput.addEventListener('input', () => {
+        //     adTitlePreview.innerText = adHeadlineInput.value;
+        //     document.getElementById("yap_large_card__title").textContent = adHeadlineInput.value;
         // });
 
         // CTA Button Text Listener + Preview

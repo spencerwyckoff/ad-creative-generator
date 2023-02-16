@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            * {
+				box-sizing: inherit;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Ubuntu", "Helvetica Neue", sans-serif;
+			}
+        </style>
+    </head>
+    <body>
+        <div id="yap_large_card" style="display: block; width: 500px; min-height: 320px; padding: 0px; clear: both; background-color: transparent; border: 1px solid rgb(192, 192, 192); border-radius: 5px; position: relative !important; text-align: center !important;">
+            <div class="yap_img" style="position: relative !important;">
+                <a href="{click_url}" target="_blank" style="display: block; color: #FFF;">
+                    <img id="image-url-preview" src=""
+                        style="background-size: cover !important; width: 100% !important; height: 261px !important;"
+                        alt="{title}">
+                    <p id="advertiser-name-preview" class="yap_ad_spnsrd"
+                        style="font-size: 14px; position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.3); padding: 5px; margin: 0 14px 8px 0;">
+                        Sponsored: {sponsor}</p>
+                </a>
+            </div>
+            <div class="yap_ad_txt" style="width: 95%; margin: auto; text-align: center;">
+                <a href="{click_url}" target="_blank"
+                    style="display: block !important; color: #000; text-decoration: none;">
+                    <h2 id="ad-title-preview" style="margin-bottom: 0; font-weight: bold; font-size: 20px; text-align: center;">{title}
+                    </h2>
+                    <p id="ad-description-preview" style="margin: 0;">{description}</p>
+                </a>
+                <div style="text-align: right; position: absolute; top: 12px; right: 15px;">{gemini}</div>
+            </div>
+        </div>
+    </body>
+</html>

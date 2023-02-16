@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+            .yap_container {
+                max-width: 90%;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="yap_container" class="yap_container" style="border: 1px solid black; display: flex; flex-wrap: nowrap; align-items: flex-start; align-content: center; justify-content: flex-start; background-color: #EEEEEE; margin-bottom: 10px; clear: both; padding: 10px;">
+            <div class="yap_image" style="flex: auto;">
+                <a href="{click_url}" style="text-decoration: none; color: #000;"> 
+                    <img id="image-url-preview" src="" style="background-color: transparent; height: 156px; width: 300px; background-size: cover !important;">
+                </a>
+            </div>
+            <div class="yap_text" style="width: 100%;padding: 0 10px;">
+                <a id="advertiser-url-preview" href="{click_url}" style="text-decoration: none; color: #000;">
+                    <p id="sponsored-advertiser-name-preview"
+                        style="font-size: 11px; color: #4D90FD; padding: 0; margin: 0 0 5px 0;">
+                        <span id="advertiser-name-preview" style="float: right;">{gemini}</span>
+                        Sponsored by {Advertiser Name}
+                    </p>
+                    <h2 id="ad-title-preview" style="margin: 0 0 5px 0; padding: 0;">{title}</h2>
+                    <p id="ad-description-preview">{description}</p>
+                    <p id="ad-cta-preview"
+                        style="display: inline; background-color: #4D90FD; color: white; padding: 10px; line-height: 40px; border-radius: 5px">
+                        {callToAction}</p>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

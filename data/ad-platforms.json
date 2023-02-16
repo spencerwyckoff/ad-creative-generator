@@ -1,0 +1,27 @@
+{
+  "platforms": [
+    { "name": "Google Ads", "homepage": "https://ads.google.com/" },
+    { "name": "Facebook Ads", "homepage": "https://www.facebook.com/business/ads" },
+    { "name": "Bing Ads", "homepage": "https://www.bingads.microsoft.com/" },
+    { "name": "Yahoo Gemini", "homepage": "https://gemini.yahoo.com/" },
+    { "name": "LinkedIn Ads", "homepage": "https://www.linkedin.com/ads/" },
+    { "name": "Twitter Ads", "homepage": "https://ads.twitter.com/" },
+    { "name": "Snapchat Ads", "homepage": "https://www.snapchat.com/ads" },
+    { "name": "Pinterest Ads", "homepage": "https://ads.pinterest.com/" },
+    { "name": "Instagram Ads", "homepage": "https://www.instagram.com/business/ads/" },
+    { "name": "AdRoll", "homepage": "https://www.adroll.com/" },
+    { "name": "DoubleClick", "homepage": "https://www.doubleclickbygoogle.com/" },
+    { "name": "Taboola", "homepage": "https://www.taboola.com/" },
+    { "name": "Media.net", "homepage": "https://www.media.net/" },
+    { "name": "Outbrain", "homepage": "https://www.outbrain.com/" },
+    { "name": "Propeller Ads", "homepage": "https://propellerads.com/" },
+    { "name": "AdF.ly", "homepage": "https://www.adf.ly/" },
+    { "name": "Chitika", "homepage": "https://www.chitika.com/" },
+    { "name": "Criteo", "homepage": "https://www.criteo.com/" },
+    { "name": "Adcash", "homepage": "https://www.adcash.com/" },
+    { "name": "AdGate Media", "homepage": "https://www.adgatemedia.com/" }
+  ]
+}
+
+
+
